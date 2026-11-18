@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Syster Bunny</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<main>
+<h1>Syster Bunny</h1>
+<div class="bars">
+<div class="bar"><span>Confiança</span><div class="track"><i id="tf"></i></div><span id="tv">0%</span></div>
+<div class="bar"><span>Saciedade</span><div class="track"><i id="hf"></i></div><span id="hv">0%</span></div>
+<div class="bar"><span>Limpeza</span><div class="track"><i id="gf"></i></div><span id="gv">0%</span></div>
+<div class="bar"><span>Energia</span><div class="track"><i id="nf"></i></div><span id="nv">0%</span></div>
+</div>
+<p id="coins"></p>
+<p id="moodline" aria-live="polite">Humor: curiosa</p>
+<p id="clockline" aria-live="off" style="margin:0 0 8px;font-weight:600"></p>
+<div class="nav room-nav">
+<button id="nQ" aria-pressed="true">Quarto</button><button id="nB" aria-pressed="false">Banheiro</button><button id="nG" aria-pressed="false">Jardim</button><button id="nS" aria-pressed="false">Sala</button><button id="nK" aria-pressed="false">Cozinha</button><button id="nD" aria-expanded="false">Decorar</button>
+</div>
+<button id="callRoom" class="room-call" type="button">🔔 Chamar para este cômodo</button>
+<div id="sceneWrap"><svg id="scene" viewBox="0 0 360 470" role="img" aria-label="Quarto da Syster Bunny">
+<rect width="360" height="330" fill="var(--wall)"/>
+<rect y="330" width="360" height="140" fill="var(--floor)"/>
+<g id="rB" style="display:none">
+<rect width="360" height="330" fill="var(--bw)"/>
+<path d="M0 110h360M0 220h360M90 0v330M180 0v330M270 0v330" stroke="#fff" stroke-opacity=".35" stroke-width="2"/>
+<rect y="330" width="360" height="140" fill="var(--bf)"/>
+<circle cx="70" cy="436" r="13" fill="#ffd54a" stroke="#5a2e22" stroke-width="2"/><circle cx="82" cy="424" r="8" fill="#ffd54a" stroke="#5a2e22" stroke-width="2"/><path d="M89 424l8 2-8 3z" fill="#f08a24"/>
+<path d="M255 330h90v8h-90z" fill="#9db8c8" stroke="#5a2e22" stroke-width="2"/>
+<path d="M292 338v12m-8-6h16" stroke="#5a2e22" stroke-width="2"/>
+<path d="M34 244v16M94 244v16" stroke="#5a2e22" stroke-width="3" stroke-linecap="round"/>
+<rect x="22" y="236" width="84" height="9" rx="3" fill="#c98f5a" stroke="#5a2e22" stroke-width="2.5"/>
+<path d="M38 236q2-8 10-8h28q8 0 10 8z" fill="#fff" fill-opacity=".65" stroke="#5a2e22" stroke-width="2"/>
+</g>
+<g id="rG" style="display:none">
+ <rect id="gSky" width="360" height="330" fill="#a9d8ef"/><g id="gStars"></g><g id="gBow" opacity="0" fill="none"><path d="M10 310A170 170 0 0 1 350 310" stroke="#ff6b6b" stroke-width="13"/><path d="M24 310A156 156 0 0 1 336 310" stroke="#ffd166" stroke-width="13"/><path d="M38 310A142 142 0 0 1 322 310" stroke="#6bcb77" stroke-width="13"/><path d="M52 310A128 128 0 0 1 308 310" stroke="#5aa9e6" stroke-width="13"/></g><g id="gSun"><circle r="42" fill="#ffe58a" opacity=".3"/><circle r="28" fill="#ffe58a"/></g><g id="gMoon" style="display:none"><circle r="24" fill="#f6f0d0"/><circle cx="-7" cy="-5" r="5" fill="#e3dcb4"/><circle cx="8" cy="7" r="3.8" fill="#e3dcb4"/><circle cx="6" cy="-10" r="2.6" fill="#e3dcb4"/></g><g id="gClouds"></g>
+ <path d="M0 260Q80 220 160 260T360 250V470H0Z" fill="#77bd78"/><path d="M0 330Q90 300 180 335T360 320V470H0Z" fill="#5fae68"/>
+ <path d="M55 260V120m0 25q-40-30-42 8 24 25 42-8m0 30q40-34 45 4-22 30-45-4" stroke="#795638" stroke-width="9" fill="#4f9c62"/>
+ <path d="M300 270v-90m0 20q-35-25-38 8 20 22 38-8m0 25q35-27 40 7-20 25-40-7" stroke="#795638" stroke-width="8" fill="#4f9c62"/>
+ <g fill="#ffdf79"><circle cx="115" cy="365" r="8"/><circle cx="145" cy="405" r="7"/><circle cx="235" cy="370" r="8"/></g><g fill="#f58fb0"><circle cx="115" cy="353" r="7"/><circle cx="145" cy="394" r="7"/><circle cx="235" cy="358" r="7"/></g>
+</g>
+<g id="rS" style="display:none">
+ <rect width="360" height="330" fill="#e7d8c5"/><rect y="330" width="360" height="140" fill="#b88c70"/>
+  <rect x="35" y="270" width="250" height="92" rx="20" fill="#d9829e" stroke="#76533e" stroke-width="4"/><rect x="55" y="245" width="210" height="65" rx="20" fill="#efabc0" stroke="#76533e" stroke-width="4"/><path d="M60 360v28m200-28v28" stroke="#76533e" stroke-width="8"/>
+ <ellipse cx="285" cy="420" rx="48" ry="13" fill="#e6bd75" stroke="#76533e" stroke-width="3"/><path d="M260 420v28m50-28v28" stroke="#76533e" stroke-width="5"/>
+</g>
+<g id="rK" style="display:none">
+ <rect width="360" height="330" fill="#f2e8d6"/><path d="M0 90h360M0 180h360" stroke="#d7c5aa" stroke-width="3"/><rect y="330" width="360" height="140" fill="#c6ad91"/>
+ <rect x="18" y="230" width="324" height="105" rx="7" fill="#c58f68" stroke="#76533e" stroke-width="4"/><path d="M18 265h324" stroke="#76533e" stroke-width="4"/>
+ <g id="fridgeG" style="cursor:pointer" role="button" tabindex="0" aria-expanded="false" aria-label="Geladeira: toque para ver os alimentos guardados">
+ <rect x="228" y="58" width="100" height="230" rx="12" fill="#edf4f6" stroke="#788b98" stroke-width="4"/><path d="M228 158h100" stroke="#788b98" stroke-width="4"/><path d="M310 95v45m0 35v90" stroke="#788b98" stroke-width="5" stroke-linecap="round"/><g id="fridgeOpen" style="display:none"><rect x="228" y="58" width="100" height="230" rx="10" fill="#d9e8ed" stroke="#788b98" stroke-width="3"/><rect x="238" y="72" width="80" height="72" rx="5" fill="#fff7dc"/><rect x="238" y="170" width="80" height="105" rx="5" fill="#fff7dc"/><g id="fridgeFoods"></g></g></g>
+ <rect x="42" y="115" width="130" height="90" rx="8" fill="#d7e7ef" stroke="#76533e" stroke-width="4"/><path d="M42 145h130" stroke="#76533e" stroke-width="3"/><circle cx="145" cy="129" r="4" fill="#76533e"/>
+</g>
+<rect id="wx" width="360" height="470" fill="#ffb347" opacity="0" style="pointer-events:none;transition:opacity .8s"/>
+<rect id="warm" width="360" height="470" fill="#ffb347" opacity="0" style="pointer-events:none;transition:opacity .6s"/>
+<g id="d_rug" style="display:none"><ellipse cx="235" cy="428" rx="88" ry="17" fill="#e58fb0" stroke="#5a2e22" stroke-width="2"/><ellipse cx="235" cy="428" rx="62" ry="10" fill="none" stroke="#fff" stroke-opacity=".6" stroke-width="3"/></g>
+<g id="bedBack">
+<rect x="22" y="338" width="14" height="126" rx="6" fill="#b17a48" stroke="#5a2e22" stroke-width="2.5"/>
+<rect x="26" y="432" width="122" height="13" rx="5" fill="#c98f5a" stroke="#5a2e22" stroke-width="2.5"/>
+<rect x="34" y="398" width="108" height="38" rx="8" fill="#fff7ee" stroke="#5a2e22" stroke-width="2.5"/>
+<ellipse cx="62" cy="394" rx="25" ry="11" fill="#ffd9e6" stroke="#5a2e22" stroke-width="2.5"/>
+<rect x="76" y="396" width="66" height="40" rx="8" fill="#ff9aa8" stroke="#5a2e22" stroke-width="2.5"/>
+<path d="M84 408h50M84 420h50" stroke="#fff" stroke-opacity=".55" stroke-width="3" stroke-linecap="round"/>
+<rect x="140" y="388" width="12" height="76" rx="5" fill="#b17a48" stroke="#5a2e22" stroke-width="2.5"/>
+</g>
+<g id="d_cush" style="display:none"><ellipse cx="190" cy="446" rx="30" ry="13" fill="#7fc8a9" stroke="#5a2e22" stroke-width="2.5"/><circle cx="190" cy="443" r="3" fill="#5a2e22"/></g>
+<g id="d_fan" style="display:none;cursor:pointer" role="button" tabindex="0" aria-label="Ligar ventilador"><rect x="283" y="398" width="8" height="28" fill="#9aa5c4" stroke="#5a2e22" stroke-width="2"/><ellipse cx="287" cy="428" rx="16" ry="5" fill="#9aa5c4" stroke="#5a2e22" stroke-width="2"/><g id="fanBlades"><ellipse cx="287" cy="374" rx="5" ry="12" fill="#cfe9f7" stroke="#5a2e22" stroke-width="2"/><ellipse cx="287" cy="374" rx="5" ry="12" fill="#cfe9f7" stroke="#5a2e22" stroke-width="2" transform="rotate(120 287 386)"/><ellipse cx="287" cy="374" rx="5" ry="12" fill="#cfe9f7" stroke="#5a2e22" stroke-width="2" transform="rotate(240 287 386)"/><circle cx="287" cy="386" r="4" fill="#5a2e22"/></g></g>
+<g id="d_lamp" style="display:none;cursor:pointer" role="button" tabindex="0" aria-label="Acender ou apagar a luminária"><circle id="glow" cx="335" cy="318" r="50" fill="#ffd966" opacity=".2"/><path d="M335 332v90" stroke="#5a2e22" stroke-width="4"/><path d="M318 332l8-26h18l8 26z" fill="#ffd966" stroke="#5a2e22" stroke-width="2.5"/><ellipse cx="335" cy="423" rx="14" ry="5" fill="#5a2e22"/></g>
+<g id="carrot" transform="translate(262 412)" style="display:none">
+<path d="M0 0l-12-34 24 0z" transform="rotate(180)" fill="#f08a24"/>
+<path d="M-6 -36l-6-12M0 -36l0-14M6 -36l6-12" stroke="#5bb450" stroke-width="5" stroke-linecap="round"/>
+</g>
+<g id="bunny" stroke="#5a2e22" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round">
+<ellipse cx="-38" cy="98" rx="14" ry="17" fill="#f6dfa8"/>
+<path d="M-24 100h18v22h-18zM6 100h18v22h-18z" fill="#4f86c6"/>
+<ellipse cx="-16" cy="127" rx="15" ry="9" fill="#8a5530"/><ellipse cx="16" cy="127" rx="15" ry="9" fill="#8a5530"/>
+<ellipse cx="0" cy="66" rx="34" ry="30" fill="#f58fb0"/>
+<path d="M-27 72h54v32q0 6-6 6h-42q-6 0-6-6z" fill="#4f86c6"/>
+<path d="M-20 46l4 26M20 46l-4 26" stroke="#4f86c6" stroke-width="7"/>
+<rect x="-11" y="80" width="22" height="14" rx="4" fill="#5b95d6"/>
+<circle cx="-16" cy="72" r="3" fill="#ffc23a" stroke-width="1.5"/><circle cx="16" cy="72" r="3" fill="#ffc23a" stroke-width="1.5"/>
+<g id="foamBody" style="pointer-events:none"></g>
+<ellipse cx="-40" cy="70" rx="9" ry="18" fill="#f58fb0" transform="rotate(12 -40 70)"/><circle cx="-46" cy="92" r="9" fill="#fff"/>
+<ellipse cx="40" cy="70" rx="9" ry="18" fill="#f58fb0" transform="rotate(-12 40 70)"/><circle cx="46" cy="92" r="9" fill="#fff"/>
+<ellipse cx="0" cy="44" rx="38" ry="12" fill="#f58fb0"/>
+<g id="earL"><ellipse cx="-26" cy="-78" rx="15" ry="44" fill="#fbe9c0" transform="rotate(-8 -24 -34)"/><ellipse cx="-26" cy="-74" rx="8" ry="30" fill="#f7a6bd" stroke="none" transform="rotate(-8 -24 -34)"/></g>
+<g id="earR"><g transform="rotate(22 24 -34)"><ellipse cx="26" cy="-78" rx="15" ry="44" fill="#fbe9c0"/><ellipse cx="26" cy="-74" rx="8" ry="30" fill="#f7a6bd" stroke="none"/></g></g>
+<ellipse id="body" cx="0" cy="0" rx="50" ry="42" fill="#fbe9c0"/>
+<g id="dirtMarks" style="display:none;pointer-events:none;transition:opacity 1.2s ease" opacity="0">
+ <ellipse cx="-25" cy="-10" rx="9" ry="5" fill="#8a6244" transform="rotate(-24 -25 -10)"/>
+ <circle cx="19" cy="-19" r="5" fill="#8a6244"/><circle cx="30" cy="7" r="6" fill="#8a6244"/>
+ <ellipse cx="-15" cy="25" rx="7" ry="4" fill="#8a6244" transform="rotate(18 -15 25)"/>
+ <circle cx="-34" cy="7" r="4" fill="#8a6244"/><circle cx="8" cy="31" r="4" fill="#8a6244"/>
+ <circle cx="-7" cy="-49" r="4" fill="#8a6244"/><circle cx="27" cy="-43" r="3.5" fill="#8a6244"/>
+</g>
+<g id="foamHead" style="pointer-events:none"></g>
+<g transform="translate(-34 -34)" stroke-width="1.5"><path d="M-6 6q-14 2-14 10q10 0 14-10z" fill="#5bb450"/><g fill="#fff"><circle cx="0" cy="-7" r="5.5"/><circle cx="6.6" cy="-2.2" r="5.5"/><circle cx="4.1" cy="5.7" r="5.5"/><circle cx="-4.1" cy="5.7" r="5.5"/><circle cx="-6.6" cy="-2.2" r="5.5"/></g><circle r="4" fill="#ffc23a"/></g>
+<circle id="chkL" cx="-32" cy="12" r="8" fill="#ff9fb4" stroke="none" opacity="0"/>
+<circle id="chkR" cx="32" cy="12" r="8" fill="#ff9fb4" stroke="none" opacity="0"/>
+<g id="eyeL"><circle r="10" fill="#8a4b1f"/><circle cx="1" cy="1" r="5.5" fill="#2b1408" stroke="none"/><circle cx="-3" cy="-3" r="2.8" fill="#fff" stroke="none"/></g>
+<g id="eyeR"><circle r="10" fill="#8a4b1f"/><circle cx="1" cy="1" r="5.5" fill="#2b1408" stroke="none"/><circle cx="-3" cy="-3" r="2.8" fill="#fff" stroke="none"/></g>
+<path d="M-4 9h8l-4 5z" fill="#f48aa6" stroke-width="1.5"/>
+<path id="mouth" d="M-8 19Q0 16 8 19" fill="none"/>
+<path d="M36 10l14-3M36 15l14 3M-36 10l-14-3M-36 15l-14 3" stroke-width="1.5" fill="none"/>
+</g>
+
+<g id="sleepG" style="display:none" opacity="0" pointer-events="none" stroke="#5a2e22" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round">
+<g id="sleepHead">
+<g transform="rotate(-18 50 376)"><ellipse cx="50" cy="352" rx="8" ry="22" fill="#fbe9c0"/><ellipse cx="50" cy="354" rx="4" ry="15" fill="#f7a6bd" stroke="none"/></g>
+<g id="sleepEar"><g transform="rotate(82 72 380)"><ellipse cx="72" cy="356" rx="8" ry="22" fill="#fbe9c0"/><ellipse cx="72" cy="358" rx="4" ry="15" fill="#f7a6bd" stroke="none"/></g></g>
+<ellipse cx="62" cy="405" rx="19" ry="6" fill="#f58fb0"/>
+<ellipse cx="62" cy="388" rx="21" ry="18" fill="#fbe9c0"/>
+<g transform="translate(49 377) scale(.62)" stroke-width="2.2"><path d="M-6 6q-14 2-14 10q10 0 14-10z" fill="#5bb450"/><g fill="#fff"><circle cx="0" cy="-7" r="5.5"/><circle cx="6.6" cy="-2.2" r="5.5"/><circle cx="4.1" cy="5.7" r="5.5"/><circle cx="-4.1" cy="5.7" r="5.5"/><circle cx="-6.6" cy="-2.2" r="5.5"/></g><circle r="4" fill="#ffc23a"/></g>
+<circle cx="47" cy="394" r="4.5" fill="#ff9fb4" stroke="none"/><circle cx="77" cy="394" r="4.5" fill="#ff9fb4" stroke="none"/>
+<path d="M51 388q4 4.5 8 0M65 388q4 4.5 8 0" fill="none" stroke-width="2"/>
+<path d="M59.5 392h5l-2.5 3.2z" fill="#f48aa6" stroke-width="1.4"/>
+<path d="M58.5 397.5q3.5 3 7 0" fill="none" stroke-width="1.6"/>
+<path d="M82 389l9-2M82 393l9 2M42 389l-9-2M42 393l-9 2" stroke-width="1.3" fill="none"/>
+<circle cx="66" cy="394" r="0" fill="#fff" fill-opacity=".6" stroke="#7cc9ee" stroke-width="1.5"><animate attributeName="r" values="0;0;5;8;0" keyTimes="0;.12;.6;.92;1" dur="3.4s" repeatCount="indefinite"/></circle>
+</g>
+</g>
+<path id="d_blank" style="display:none" d="M74 394h68v44q-12 9-23 0t-23 0t-22 0z" fill="#8fa0ff" stroke="#5a2e22" stroke-width="2.5"/>
+<g id="bedFront" style="display:none"><g id="blanketBr"><path d="M50 414q0-11 14-11h72q8 0 8 8v27H50z" fill="#ff9aa8" stroke="#5a2e22" stroke-width="2.5"/><path d="M68 417h66M68 429h66" stroke="#fff" stroke-opacity=".55" stroke-width="3" stroke-linecap="round"/></g><rect x="26" y="432" width="122" height="13" rx="5" fill="#c98f5a" stroke="#5a2e22" stroke-width="2.5"/></g>
+<g id="shower" style="display:none">
+<path d="M282 72v76q0 12 12 12h12" fill="none" stroke="#65758b" stroke-width="8" stroke-linecap="round"/>
+<path d="M270 150q0-18 18-18h28q18 0 18 18v7h-64z" fill="#d9e7ef" stroke="#5a2e22" stroke-width="2.5"/>
+<path d="M278 157l-5 10m18-10-5 14m18-14-5 10m18-10-5 14m18-14-5 10" stroke="#6cc3e8" stroke-width="3" stroke-linecap="round"/>
+<g id="waterStream" opacity="0">
+<path d="M281 176l-7 95m20-95-2 105m21-105 4 95m16-95 8 105" stroke="#6cc3e8" stroke-width="3" stroke-linecap="round" stroke-dasharray="5 9"><animate attributeName="stroke-dashoffset" from="0" to="-14" dur=".35s" repeatCount="indefinite"/></path>
+<path d="M287 176l-4 95m16-95-1 100m18-100 2 100" stroke="#6cc3e8" stroke-width="2" stroke-linecap="round" stroke-dasharray="3 12" opacity=".7"><animate attributeName="stroke-dashoffset" from="0" to="-15" dur=".5s" repeatCount="indefinite"/></path>
+<ellipse cx="276" cy="286" rx="3" ry="2" fill="none" stroke="#6cc3e8" stroke-width="2"><animate attributeName="rx" values="3;13;3" dur=".7s" repeatCount="indefinite"/><animate attributeName="opacity" values="1;0;1" dur=".7s" repeatCount="indefinite"/></ellipse>
+<ellipse cx="294" cy="290" rx="3" ry="2" fill="none" stroke="#6cc3e8" stroke-width="2"><animate attributeName="rx" values="3;13;3" dur=".7s" begin=".23s" repeatCount="indefinite"/><animate attributeName="opacity" values="1;0;1" dur=".7s" begin=".23s" repeatCount="indefinite"/></ellipse>
+<ellipse cx="312" cy="286" rx="3" ry="2" fill="none" stroke="#6cc3e8" stroke-width="2"><animate attributeName="rx" values="3;13;3" dur=".7s" begin=".46s" repeatCount="indefinite"/><animate attributeName="opacity" values="1;0;1" dur=".7s" begin=".46s" repeatCount="indefinite"/></ellipse>
+</g>
+<g id="steam" opacity="0" style="pointer-events:none">
+<path d="M284 262q-7-9 0-18t0-18" stroke="#fff" stroke-width="4" fill="none" stroke-linecap="round" opacity="0"><animate attributeName="opacity" values="0;.9;0" dur="2s" repeatCount="indefinite"/><animateTransform attributeName="transform" type="translate" values="0 0;0 -28" dur="2s" repeatCount="indefinite"/></path>
+<path d="M304 266q-7-9 0-18t0-18" stroke="#fff" stroke-width="4" fill="none" stroke-linecap="round" opacity="0"><animate attributeName="opacity" values="0;.9;0" dur="2s" begin=".6s" repeatCount="indefinite"/><animateTransform attributeName="transform" type="translate" values="0 0;0 -28" dur="2s" begin=".6s" repeatCount="indefinite"/></path>
+<path d="M324 262q-7-9 0-18t0-18" stroke="#fff" stroke-width="4" fill="none" stroke-linecap="round" opacity="0"><animate attributeName="opacity" values="0;.9;0" dur="2s" begin="1.2s" repeatCount="indefinite"/><animateTransform attributeName="transform" type="translate" values="0 0;0 -28" dur="2s" begin="1.2s" repeatCount="indefinite"/></path>
+</g>
+<circle cx="304" cy="180" r="5" fill="#f4c95d" stroke="#5a2e22" stroke-width="1.5"/>
+</g>
+<g id="soapG" style="display:none" role="button" tabindex="0" aria-label="Sabão: arraste até a Syster para ensaboar" transform="translate(62 221)">
+<circle id="soapRing" r="30" fill="none" stroke="#fff" stroke-width="2.5" stroke-dasharray="5 6" opacity=".9"><animate attributeName="r" values="27;32;27" dur="1.8s" repeatCount="indefinite"/></circle>
+<circle r="30" fill="transparent" stroke="none"/>
+<rect x="-20" y="-11" width="40" height="22" rx="10" fill="#ffc2dd" stroke="#5a2e22" stroke-width="2.5"/>
+<path d="M-12 -4q9-5 22-1" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+<circle cx="-15" cy="-17" r="3.5" fill="#fff" fill-opacity=".6" stroke="#7cc9ee" stroke-width="1.5"/><circle cx="-8" cy="-22" r="2.2" fill="#fff" fill-opacity=".6" stroke="#7cc9ee" stroke-width="1.2"/><circle cx="17" cy="-16" r="2.8" fill="#fff" fill-opacity=".6" stroke="#7cc9ee" stroke-width="1.2"/>
+</g>
+<g id="soapFx" style="pointer-events:none;display:none"></g>
+<rect id="nightTint" width="360" height="470" fill="#0d1033" opacity="0" style="pointer-events:none;transition:opacity .6s"/>
+<g id="winLayer" style="pointer-events:none"><g id="wQ" style="display:none"></g><g id="wS" style="display:none"></g><g id="wK" style="display:none"></g></g>
+<rect id="flash" width="360" height="470" fill="#fff" opacity="0" style="pointer-events:none"/>
+<g id="gRain" style="display:none;pointer-events:none" opacity="0"></g>
+<rect id="dim" width="360" height="470" fill="#14102a" opacity="0" style="pointer-events:none"/>
+<g id="fx"></g>
+<g id="bub" style="opacity:0;transition:opacity .3s;pointer-events:none"><path d="M-6 8h12l-6 10z" fill="var(--card)" stroke="#5a2e22" stroke-width="2"/><rect id="bubR" x="-30" y="-16" width="60" height="26" rx="13" fill="var(--card)" stroke="#5a2e22" stroke-width="2"/><text id="bubT" text-anchor="middle" y="2" font-size="13" font-family="Fredoka,'Trebuchet MS',sans-serif" fill="var(--ink)"></text></g>
+</svg>
+<div id="gardenGameField" hidden aria-label="Área do minijogo: arraste a rede até as borboletas">
+  <div id="butterflies"></div><div id="net" role="button" tabindex="0" aria-label="Rede: arraste para capturar borboletas"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="25" cy="22" r="17" fill="#d9f2ff" fill-opacity=".55" stroke="#76533e" stroke-width="4"/><path d="M13 10l24 24M25 5v34M8 22h34M13 34l24-24M37 35L56 59" fill="none" stroke="#76533e" stroke-width="2.2" stroke-linecap="round"/><path d="M37 35L56 59" stroke="#b77b4d" stroke-width="5" stroke-linecap="round"/></svg></div>
+</div>
+</div>
+<div id="showerControls" class="shower-controls" hidden aria-label="Controles do chuveiro">
+<button id="showerToggle" type="button" aria-pressed="false">Ligar chuveiro</button>
+<button id="showerCold" type="button" class="active" aria-pressed="true">Água fria</button>
+<button id="showerHot" type="button" aria-pressed="false">Água quente</button>
+</div>
+<div id="kitchenControls" class="shower-controls" hidden>
+<button id="marketToggle" type="button" aria-expanded="false">🛒 Supermercado</button>
+</div>
+<section id="fridgePanel" hidden aria-label="Alimentos guardados na geladeira">
+  <div class="market-head"><strong>🧊 Geladeira</strong><button id="fridgeClose" type="button">Fechar</button></div>
+  <div id="fridgeItems" class="pantry-list"></div>
+  <p class="market-note">Arraste o alimento até a boca da Syster, ou toque em Oferecer. Ela precisa estar na cozinha (use o sino).</p>
+</section>
+<section id="marketPanel" hidden aria-label="Supermercado e despensa da Syster Bunny">
+  <div class="market-head"><strong>🛒 Supermercado</strong><button id="marketClose" type="button">Fechar</button></div>
+  <p class="market-note">Compre alimentos para guardar na despensa. Os itens permanecem no seu estoque até serem oferecidos à Syster.</p>
+  <div class="market-cats" id="marketCats">
+    <button type="button" data-category="fruits" class="active">🍎 Frutas</button>
+    <button type="button" data-category="vegetables">🥕 Vegetais</button>
+    <button type="button" data-category="sweets">🧁 Doces</button>
+    <button type="button" data-category="drinks">🥤 Bebidas</button>
+  </div>
+  <div id="marketProducts" class="market-grid"></div>
+  <div class="divider" style="height:1px;background:var(--bar)"></div>
+  <div class="market-head"><strong>🧺 Minha despensa</strong><span id="pantryCount">0 itens</span></div>
+  <div id="pantryItems" class="pantry-list"></div>
+  <p class="market-note">Para oferecer um alimento, a Syster precisa estar na cozinha. Use o sino para chamá-la.</p>
+</section>
+<section id="gamePanel" hidden aria-label="Minijogos do jardim">
+  <strong>🦋 Caça às borboletas</strong>
+  <div id="gameIntro">Escolha a dificuldade e arraste a rede até as borboletas. A Syster vai acompanhar a brincadeira!</div>
+  <div class="game-levels" id="gameLevels">
+    <button type="button" data-level="easy" class="selected">Fácil</button>
+    <button type="button" data-level="medium">Médio</button>
+    <button type="button" data-level="hard">Difícil</button>
+  </div>
+  <div id="gameStats" hidden><span id="gameScore">Capturas: 0</span><span id="gameTime">Tempo: 45s</span></div>
+  <p id="gameFinish" aria-live="polite"></p>
+  <button id="gameStart" type="button">Começar a brincadeira</button>
+  <button id="gameClose" type="button" hidden>Fechar minijogo</button>
+</section>
+<p id="stage"></p>
+<p id="msg"></p>
+<div id="shop" hidden></div>
+<div id="ask" hidden><button id="aY">Pode</button><button id="aN">Agora não</button></div>
+<div class="btns">
+<button id="bq">Ficar quieto</button>
+<button id="bc">Usar chuveiro</button>
+<button id="bp">Carinho</button>
+<button id="bs">Dormir</button>
+<button id="btalk">Conversar</button>
+</div>
+</main>
+<script type="module" src="src/app.js"></script>
+</body>
+</html>
