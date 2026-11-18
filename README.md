@@ -2,15 +2,6 @@
 
 Esta versão separa funcionalidades em módulos sem alterar intencionalmente a identidade visual ou as mecânicas existentes.
 
-## Como executar
-
-Abra um terminal nesta pasta e execute:
-
-```bash
-python -m http.server 8000
-```
-
-Acesse http://localhost:8000 no navegador. Use um servidor local porque o projeto utiliza JavaScript ES Modules.
 
 ## Organização
 
@@ -34,7 +25,6 @@ Acesse http://localhost:8000 no navegador. Use um servidor local porque o projet
 - `core/utils.js`: funções utilitárias.
 - `data/dialogues.js`: falas da personagem.
 
-A versão 0.13 foi preservada para comparação. Antes de substituir qualquer cópia anterior, teste esta versão no navegador.
 
 
 ## Correções da versão 0.16
